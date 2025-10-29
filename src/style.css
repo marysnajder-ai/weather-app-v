@@ -1,0 +1,8 @@
+.weather-app {
+  background: rgb(190, 126, 126);
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
+}
