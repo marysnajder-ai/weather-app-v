@@ -18,18 +18,19 @@
 <body>
   <div class="weather-app">
     <!-- Search -->
-    <div class="search-box">
-      <input type="text" placeholder="Search for cities" />
-    </div>
+    <form class="search-box" id="search-box">
+      <input type="text" id="search-input" placeholder="Search for cities" />
+      <button type="submit">🔍</button>
+    </form>
 
     <!-- Current weather -->
     <div class="current-weather">
       <div class="location">
-        <h1>Madrid</h1>
-        <p>Chance of rain: <span>0%</span></p>
+        <h1 id="current-city">Madrid</h1>
+        <p id="current-date">Thursday 09:41</p>
       </div>
       <div class="temp-icon">
-        <h2>31°</h2>
+        <h2 id="current-temperature">31°</h2>
         <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="sun icon" />
       </div>
     </div>
@@ -66,6 +67,7 @@
       </p>
     </footer>
   </div>
+  <script src="src/app.js"></script>
 </body>
 
 </html>

@@ -23,6 +23,10 @@ body {
 }
 
 /* Search bar */
+.search-box {
+  display: flex;
+  gap: 8px;
+}
 .search-box input {
   width: 100%;
   padding: 10px;
@@ -32,6 +36,25 @@ body {
   background: #2a3358;
   color: #fff;
   font-size: 14px;
+}
+
+.search-box input {
+  flex: 1;
+}
+
+.search-box button {
+  background: #3c4e88;
+  border: none;
+  color: #fff;
+  padding: 0 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.search-box button:hover {
+  background: #4e63b5;
 }
 
 /* Current weather */
