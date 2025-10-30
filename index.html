@@ -2,27 +2,60 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="src/style.css" />
-    <title>My Weather App</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="src/style.css" />
+  <title>My Weather App</title>
 </head>
 
+
 <body>
-    <!--Main Container and Card -->
-    <div class="container">
-        <div class="weather-app"></div>
+  <div class="weather-app">
+    <!-- Search -->
+    <div class="search-box">
+      <input type="text" placeholder="Search for cities" />
+    </div>
+
+    <!-- Current weather -->
+    <div class="current-weather">
+      <div class="location">
+        <h1>Madrid</h1>
+        <p>Chance of rain: <span>0%</span></p>
+      </div>
+      <div class="temp-icon">
+        <h2>31°</h2>
+        <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="sun icon" />
+      </div>
+    </div>
 
 
-
-
-
+    <!-- Air conditions -->
+    <div class="air-conditions">
+      <div class="condition">
+        <p>Real Feel</p>
+        <h3>30°</h3>
+      </div>
+      <div class="condition">
+        <p>Wind</p>
+        <h3>0.2 km/h</h3>
+      </div>
+      <div class="condition">
+        <p>Chance of rain</p>
+        <h3>0%</h3>
+      </div>
+      <div class="condition">
+        <p>UV Index</p>
+        <h3>3</h3>
+      </div>
+      <button class="see-more">See more</button>
+    </div>
+  </div>
 </body>
 
 </html>
