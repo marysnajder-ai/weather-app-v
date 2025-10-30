@@ -22,6 +22,12 @@ body {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
+.weather-app-icon {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
 /* Search bar */
 .search-box {
   display: flex;
