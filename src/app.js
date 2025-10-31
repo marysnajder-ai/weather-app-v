@@ -28,6 +28,7 @@ function displayWeather(response) {
   let windSpeedElement = document.querySelector("#wind-speed");
   let descriptionElement = document.querySelector("#description");
   let iconElement = document.querySelector("#icon");
+  let timeElement = document.querySelector("#time");
 
   console.log(response.data); // debugging
 
@@ -46,6 +47,12 @@ function displayWeather(response) {
     iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" 
       class="weather-app-icon" 
       alt="${response.data.condition.description}" />`;
+  }
+  if (response.data.time) {
+    let date = new Date(response.data.time * 1000);
+    timeElement.innerHTML = formatDate(date);
+  } else {
+    timeElement.innerHTML = formatDate(new Date());
   }
 }
 
