@@ -28,7 +28,7 @@ function displayWeather(response) {
   let windSpeedElement = document.querySelector("#wind-speed");
   let descriptionElement = document.querySelector("#description");
   let iconElement = document.querySelector("#icon");
-  let timeElement = document.querySelector("#time");
+  let dateElement = document.querySelector("#current-date");
 
   console.log(response.data); // debugging
 
@@ -48,12 +48,14 @@ function displayWeather(response) {
       class="weather-app-icon" 
       alt="${response.data.condition.description}" />`;
   }
+  let date;
   if (response.data.time) {
-    let date = new Date(response.data.time * 1000);
-    timeElement.innerHTML = formatDate(date);
+    // If API provides a timestamp, use it
+    date = new Date(response.data.time * 1000);
   } else {
-    timeElement.innerHTML = formatDate(new Date());
+    date = new Date();
   }
+  dateElement.innerHTML = formatDate(date);
 }
 
 // ---- LOAD DEFAULT CITY ----
@@ -61,7 +63,6 @@ function loadDefaultCity() {
   let defaultCity = "Madrid";
   let apiKey = "7d9d8aed460317f0t10f235204bb13o9";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${defaultCity}&key=${apiKey}&units=metric`;
-  // your full API URL for default city
 
   axios.get(apiUrl).then(displayWeather);
 }
@@ -75,14 +76,11 @@ function search(event) {
   let apiKey = "7d9d8aed460317f0t10f235204bb13o9";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
-  axios.get(apiUrl).then(displayWeather); // ✅ now uses the same function
+  axios.get(apiUrl).then(displayWeather);
 }
 
 // ---- EVENT LISTENERS ----
 document.querySelector("#search-box").addEventListener("submit", search);
-
-let currentDateELement = document.querySelector("#current-date");
-currentDateELement.innerHTML = formatDate(new Date());
 
 // ---- INITIALIZE ----
 loadDefaultCity();
