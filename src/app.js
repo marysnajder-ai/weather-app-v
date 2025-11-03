@@ -21,6 +21,7 @@ function formatDate(date) {
 
 // ---- DISPLAY WEATHER ----
 function displayWeather(response) {
+  let data = response.data;
   let cityElement = document.querySelector("#current-city");
   let temperatureElement = document.querySelector("#current-temperature");
   let feelsLikeElement = document.querySelector("#feels-like");
@@ -29,8 +30,6 @@ function displayWeather(response) {
   let descriptionElement = document.querySelector("#description");
   let iconElement = document.querySelector("#icon");
   let dateElement = document.querySelector("#current-date");
-
-  console.log(response.data); // debugging
 
   cityElement.innerHTML = response.data.city;
   temperatureElement.innerHTML = `${Math.round(
@@ -49,13 +48,55 @@ function displayWeather(response) {
       alt="${response.data.condition.description}" />`;
   }
   let date;
-  if (response.data.time) {
-    // If API provides a timestamp, use it
-    date = new Date(response.data.time * 1000);
+  if (data.time) {
+    date = new Date(data.time * 1000);
   } else {
     date = new Date();
   }
   dateElement.innerHTML = formatDate(date);
+
+  // --- LOAD FORECAST FOR DEFAULT ---
+  let apiKey = "7d9d8aed460317f0t10f235204bb13o9";
+  let forecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${data.city}&key=${apiKey}&units=metric`;
+
+  axios
+    .get(forecastUrl)
+    .then(displayForecast)
+    .catch((error) => console.error("Error fetching forecast:", error));
+}
+
+// ---- DISPLAY FORECAST ----
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = "";
+
+  let forecastDays = response.data.daily;
+  if (!forecastDays || forecastDays.length === 0) {
+    forecastElement.innerHTML =
+      "<p>Forecast data unavailable. Check API key or response structure.</p>";
+    return;
+  }
+  let forecastHTML = "";
+
+  forecastDays.slice(0, 5).forEach(function (day) {
+    let date = new Date(day.time * 1000);
+    let dayName = date.toLocaleDateString(undefined, { weekday: "short" });
+    forecastHTML += `
+      <div class="forecast-day">
+        <p class="day-name">${dayName}</p>
+        <img
+          src="${day.condition.icon_url}"
+          alt="${day.condition.description}"
+    class="forecast-icon"
+        />
+        <p class="forecast-temps">
+          <span class="max">${Math.round(day.temperature.maximum)}°</span>
+          <span class="min">${Math.round(day.temperature.minimum)}°</span>
+        </p>
+          </div>
+    `;
+  });
+  forecastElement.innerHTML = forecastHTML;
 }
 
 // ---- LOAD DEFAULT CITY ----

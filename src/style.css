@@ -109,6 +109,55 @@ body {
   font-size: 18px;
 }
 
+/* Forecast */
+
+.forecast-section {
+  margin-top: 30px;
+  text-align: left;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.daily-forecast {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 25px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #fff;
+}
+
+.forecast-day {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.day-name {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.forecast-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 4px;
+}
+
+.forecast-temps {
+  font-size: 14px;
+}
+
+.forecast-temps .max {
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.forecast-temps .min {
+  opacity: 0.6;
+}
+
 .footer {
   text-align: center;
   margin-top: 15px;
